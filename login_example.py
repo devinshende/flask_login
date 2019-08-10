@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
-from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user \
-,current_user
+from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, \
+current_user
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////Users/sameer/Desktop/flask-login/login.db'
@@ -22,8 +22,9 @@ def load_user(user_id):
 @app.route('/')
 def index():
 	# request.get('username')
+	print(type(User.query))
 	user = User.query.fiter_by(username='Antonio').first()
-	login_user(user)	
+	# login_user(user)	
 	return 'Hello Antonio'
 
 @app.route('/logout')
